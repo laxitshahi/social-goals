@@ -1,4 +1,3 @@
 # **mern-fs-app**
 
-## FS Application using:
-### MongoDB, Express, React, and Node.js
+**Fullstack Application utilizing: MongoDB, Express, React, Node.js**
