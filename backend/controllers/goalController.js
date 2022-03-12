@@ -1,12 +1,20 @@
 const asyncHandler = require("express-async-handler");
 //asyncHandler allows you to use errorHandler instead of try + catch with await
+
+//import Models
+const Goal = require("../models/goalModel");
 /* @GET
 Desc    Gets Goals
 @route  GET /api/goals
 @access Private (with auth)
 */
 const getGoals = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "Get Goal" });
+  const goals = await Goal.find();
+  if (goals.length === 0) {
+    res.status(400);
+    throw new Error("No goals available");
+  }
+  res.status(200).json(goals);
 });
 
 /* @POST
@@ -19,7 +27,11 @@ const setGoal = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please add a text field");
   }
-  res.status(200).json({ message: "Set Goal" });
+
+  const goal = await Goal.create({
+    text: req.body.text,
+  });
+  res.status(200).json(goal);
 });
 
 /* @PUT
@@ -28,7 +40,17 @@ Desc    Update Goal
 @access Private (with auth)
 */
 const updateGoal = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: `Update Goal ${req.params.id}` });
+  const goal = await Goal.findById(req.params.id);
+
+  if (!goal) {
+    res.status(400);
+    throw new Error("Goal does not exist.");
+  }
+  const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+
+  res.status(200).json(updatedGoal);
 });
 
 /* @DELETE
@@ -37,7 +59,16 @@ Desc    Delete Goal
 @access Private (with auth)
 */
 const deleteGoal = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: `Delete Goal ${req.params.id}` });
+  //assign that specifc "goal" to goal const
+  const goal = await Goal.findById(req.params.id);
+
+  if (!goal) {
+    res.status(400);
+    throw new Error("Goal does not exist.");
+  }
+  //no need to find by id, just remove the goal
+  await goal.remove();
+  res.status(200).json({ id: req.params.id });
 });
 
 module.exports = {
