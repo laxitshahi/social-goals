@@ -3,7 +3,7 @@ const dotenv = require("dotenv").config();
 const colors = require("colors");
 const { errorHandler } = require("./middleware/errorMiddleware");
 const connectDB = require("./config/db");
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3011;
 
 //connect to DB
 connectDB();
@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //this uses the express router to connect the http request to the folder/file that contains the request
 app.use("/api/goals", require("./routes/goalRoutes"));
+app.use("/api/users", require("./routes/userRoutes"));
 
 //Using this errHandler will overwrite the default errorhandler
 app.use(errorHandler);
