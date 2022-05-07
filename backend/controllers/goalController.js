@@ -13,7 +13,7 @@ const getGoals = asyncHandler(async (req, res) => {
   const goals = await Goal.find({ user: req.user.id }); //the value of _id(object) can be accessed using id(string)
   if (goals.length === 0) {
     res.status(400);
-    throw new Error("No goals available");
+    // throw new Error("No goals available");
   }
   res.status(200).json(goals);
 });
@@ -78,7 +78,7 @@ Desc    Delete Goal
 */
 const deleteGoal = asyncHandler(async (req, res) => {
   //assign that specifc "goal" to goal const
-  // const goal = await Goal.findById(req.params.id);
+  const goal = await Goal.findById(req.params.id);
 
   if (!goal) {
     res.status(400);
@@ -101,7 +101,6 @@ const deleteGoal = asyncHandler(async (req, res) => {
   const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
-
   //no need to find by id, just remove the goal
   await goal.remove();
   res.status(200).json({ id: req.params.id });

@@ -19,6 +19,7 @@ function Header() {
       <div className="logo">
         <Link to="/">Goal Setter</Link>
       </div>
+      <div></div>
       <ul>
         {user ? ( //Change Header based on if user is logged in or out
           <li>
