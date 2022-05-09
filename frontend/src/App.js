@@ -9,9 +9,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
-    <>
-      <Router>
-        <div className="container">
+    <div>
+      <Router className>
+        <div className="font-mono">
           <Header />
           <Routes>
             <Route path="/" element={<Dashboard />} />
@@ -21,7 +21,7 @@ function App() {
         </div>
       </Router>
       <ToastContainer />
-    </>
+    </div>
   );
 }
 

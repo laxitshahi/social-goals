@@ -9,15 +9,22 @@ function Goals({ goal }) {
   const dispatch = useDispatch();
 
   return (
-    <div className="goal">
-      <button onClick={() => console.log("here")} className="edit">
+    <div className="relative p-4 m-2 border rounded  hover bg-opacity-40 bg-tertiary">
+      {/* Add ability to change goal color */}
+      <button
+        onClick={() => console.log("here")}
+        className="absolute top-1 left-1"
+      >
         <FaEdit />
       </button>
-      <h4>{goal.text}</h4>
-      <h5>{new Date(goal.createdAt).toLocaleString("en-US")}</h5>
-      <button onClick={() => dispatch(deleteGoal(goal._id))} className="close">
+      <button
+        onClick={() => dispatch(deleteGoal(goal._id))}
+        className="absolute top-1 right-1"
+      >
         X
       </button>
+      <h4 className="my-2 break-words">{goal.text}</h4>
+      <h5>{new Date(goal.createdAt).toLocaleString("en-US")}</h5>
     </div>
   );
 }

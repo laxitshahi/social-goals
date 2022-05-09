@@ -62,69 +62,60 @@ function Register() {
     <Spinner />;
   }
   return (
-    <>
-      <section className="heading">
-        <h1>
-          <FaUser /> Create an Account
-        </h1>
-        <p>Input details below</p>
+    <div className="formBorder">
+      <section className="flex items-center justify-center flex-shrink px-2 rounded">
+        <FaUser />
+        <h1>Create an Account</h1>
       </section>
 
-      <section className="form">
+      <section className="formCard">
         <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              name="name"
-              value={name}
-              placeholder="Enter your name"
-              onChange={onChange}
-            />
-          </div>
+          <input
+            type="text"
+            className="formInput"
+            id="name"
+            name="name"
+            value={name}
+            placeholder="Username"
+            onChange={onChange}
+          />
 
-          <div className="form-group">
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              value={email}
-              placeholder="Enter your email"
-              onChange={onChange}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              name="password"
-              value={password}
-              placeholder="Enter your password"
-              onChange={onChange}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="password"
-              className="form-control"
-              id="password2"
-              name="password2"
-              value={password2}
-              placeholder="Confirm your password"
-              onChange={onChange}
-            />
-          </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-block" onSubmit={onSubmit}>
-              Submit
-            </button>
-          </div>
+          <input
+            type="email"
+            className="formInput"
+            id="email"
+            name="email"
+            value={email}
+            placeholder="Email"
+            onChange={onChange}
+          />
+
+          <input
+            type="password"
+            className="formInput"
+            id="password"
+            name="password"
+            value={password}
+            placeholder="Password"
+            onChange={onChange}
+          />
+
+          <input
+            type="password"
+            id="password2"
+            className="formInput"
+            name="password2"
+            value={password2}
+            placeholder="Confirm Password"
+            onChange={onChange}
+          />
+
+          <button type="submit" className="formButton" onSubmit={onSubmit}>
+            Create
+          </button>
         </form>
       </section>
-    </>
+    </div>
   );
 }
 export default Register;

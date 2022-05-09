@@ -16,10 +16,6 @@ function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const capitalizeFirstletter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
-
   useEffect(() => {
     if (isError) {
       //Fix hard coded error work around
@@ -46,15 +42,23 @@ function Dashboard() {
   }
   return (
     <>
-      <section className="heading">
-        <h1>Welcome {user && capitalizeFirstletter(user.name)}</h1>
+      <section className="my-10 capitalize">
+        <h1 className="flex justify-center my-10 text-2xl font-extrabold ">
+          Dashboard
+        </h1>
+        <h1 className="flex justify-center my-2">
+          Welcome {user && user.name}!
+        </h1>
         {/* If user exists (then)=> show user.name*/}
-        <p>Goals Dashboard</p>
+        <GoalForm />
       </section>
-      <GoalForm />
-      <section className="content ">
+
+      <div className=""></div>
+
+      <section className="flex justify-center">
         {goals.length > 0 ? (
-          <div className="goals">
+          <div className="grid grid-cols-2">
+            {/* Add feature to allow for different row placement*/}
             {goals.map((goal) => (
               <Goal key={goal._id} goal={goal} />
             ))}
