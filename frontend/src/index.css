@@ -22,9 +22,12 @@ button {
     @apply rounded flex border-2 py-1 px-6 justify-items-start
 }
 
-.formButton{
-    @apply px-24 rounded justify-center flex items-center bg-button text-headline
+@layer components {
+    .formButton{
+        @apply px-24 rounded justify-center flex items-center bg-button text-headline
+    }
 }
+
 
 
 /* Header css */

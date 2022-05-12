@@ -22,7 +22,7 @@ function Header() {
   };
   return (
     <nav className="sticky flex flex-wrap items-center justify-between p-6 border-b rounded shadow-md ">
-      <div class="flex items-center flex-shrink-0 text-white mr-6">
+      <div className="flex items-center flex-shrink-0 mr-6 text-white">
         <FaRegStickyNote />
         <div className="flex items-center flex-shrink-0 line-through rounded font- ">
           <Link to="/">Goal Setter</Link>
@@ -31,7 +31,7 @@ function Header() {
 
       {user ? ( //Change Header based on if user is logged in or out
         <div className="top-0 flex justify-end stick">
-          <button className=" headerButton">
+          <button className="headerButton">
             <FaUser />
             Profile
           </button>

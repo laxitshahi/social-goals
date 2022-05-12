@@ -1,12 +1,39 @@
 import { useEffect } from "react";
+import PropTypes from "prop-types";
+/*External Tools*/
+import { toast } from "react-toastify";
+import { getGoals, reset } from "../features/goals/goalSlice";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import GoalForm from "../components/GoalForm";
-import { getGoals, reset } from "../features/goals/goalSlice";
-// import { toast } from "react-toastify";
-import Spinner from "../components/Spinner";
-import Goal from "../components/Goal";
-import { toast } from "react-toastify";
+
+/*Component Import*/
+import { GoalForm, Spinner, Goal, Modal } from "../components";
+const RenderGoals = ({ goals }) => {
+  if (goals.length > 0 && goals.length < 3) {
+    return (
+      <div className="grid grid-cols-2">
+        {/* Add feature to allow for different row placement*/}
+        {goals.map((goal) => (
+          <Goal key={goal._id} goal={goal} />
+        ))}
+      </div>
+    );
+  } else if (goals.length >= 3 && goals.length <= 12) {
+    return (
+      <div className="grid grid-cols-3">
+        {/* Add feature to allow for different row placement*/}
+        {goals.map((goal) => (
+          <Goal key={goal._id} goal={goal} />
+        ))}
+      </div>
+    );
+  } else {
+    return <h3>You have no Goals.</h3>;
+  }
+};
+RenderGoals.propTypes = {
+  goals: PropTypes.array,
+};
 
 function Dashboard() {
   const { user } = useSelector((state) => state.auth);
@@ -55,17 +82,10 @@ function Dashboard() {
 
       <div className=""></div>
 
+      <Modal title="hello" />
       <section className="flex justify-center">
-        {goals.length > 0 ? (
-          <div className="grid grid-cols-2">
-            {/* Add feature to allow for different row placement*/}
-            {goals.map((goal) => (
-              <Goal key={goal._id} goal={goal} />
-            ))}
-          </div>
-        ) : (
-          <h3>You have no Goals.</h3>
-        )}
+        {/* 2 or less goals */}
+        <RenderGoals goals={goals} />
       </section>
     </>
   );

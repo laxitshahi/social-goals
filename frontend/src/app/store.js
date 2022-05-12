@@ -9,3 +9,4 @@ export const store = configureStore({
     goals: goalReducer,
   },
 });
+export default store;
