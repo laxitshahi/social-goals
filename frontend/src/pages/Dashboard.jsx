@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 /*Component Import*/
-import { GoalForm, Spinner, Goal, Modal } from "../components";
+import { GoalForm, Spinner, Goal } from "../components";
 const RenderGoals = ({ goals }) => {
   if (goals.length > 0 && goals.length < 3) {
     return (
@@ -80,9 +80,6 @@ function Dashboard() {
         <GoalForm />
       </section>
 
-      <div className=""></div>
-
-      <Modal title="hello" />
       <section className="flex justify-center">
         {/* 2 or less goals */}
         <RenderGoals goals={goals} />
