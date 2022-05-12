@@ -1,5 +1,11 @@
 /* eslint-disable */
-import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import {
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaUser,
+  FaRegStickyNote,
+  FaCogs,
+} from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout, reset } from "../features/auth/authSlice";
@@ -15,34 +21,38 @@ function Header() {
     navigate("/login"); //navigates page to dashboard
   };
   return (
-    <header className="header">
-      <div className="logo">
-        <Link to="/">Goal Setter</Link>
+    <nav className="sticky flex flex-wrap items-center justify-between p-6 border-b rounded shadow-md ">
+      <div className="flex items-center flex-shrink-0 mr-6 text-white">
+        <FaRegStickyNote />
+        <div className="flex items-center flex-shrink-0 line-through rounded font- ">
+          <Link to="/">Goal Setter</Link>
+        </div>
       </div>
-      <div></div>
-      <ul>
-        {user ? ( //Change Header based on if user is logged in or out
-          <li>
-            <button className="btn" onClick={onLogout}>
-              <FaSignOutAlt /> Logout
+
+      {user ? ( //Change Header based on if user is logged in or out
+        <div className="top-0 flex justify-end stick">
+          <button className="headerButton">
+            <FaUser />
+            Profile
+          </button>
+          <button className="headerButton" onClick={onLogout}>
+            <FaSignOutAlt />
+          </button>
+        </div>
+      ) : (
+        <>
+          <div className="top-0 flex justify-end stick">
+            <button className="headerButton">
+              <FaSignInAlt /> <Link to="/login">Login</Link>
             </button>
-          </li>
-        ) : (
-          <>
-            <li>
-              <Link to="/login">
-                <FaSignInAlt /> Login
-              </Link>
-            </li>
-            <li>
-              <Link to="/register">
-                <FaUser /> Register
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
-    </header>
+
+            <button className="headerButton">
+              <FaUser /> <Link to="/register">Register</Link>
+            </button>
+          </div>
+        </>
+      )}
+    </nav>
   );
 }
 export default Header;

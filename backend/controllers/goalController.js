@@ -42,10 +42,9 @@ Desc    Update Goal
 @access Private (with auth)
 */
 const updateGoal = asyncHandler(async (req, res) => {
-  // const goal = await Goal.findById(req.params.id); //go back //no need to do this since the user.id is set in the middleware (authMiddleware)
+  const goal = await Goal.findById(req.params.id);
 
   if (!goal) {
-    res.status(400);
     throw new Error("Goal does not exist.");
   }
 
@@ -65,7 +64,6 @@ const updateGoal = asyncHandler(async (req, res) => {
   const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
-
   res.status(201);
 
   res.status(200).json(updatedGoal);

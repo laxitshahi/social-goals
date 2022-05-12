@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom"; //used to redirect (rerender?)
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
-
+import FormCard from "../components/FormCard";
 function Login() {
   const [formData, setFormData] = useState({
     email: "laxit@gmail.com",
@@ -57,47 +57,41 @@ function Login() {
     return <Spinner />;
   }
   return (
-    <>
-      <section className="heading">
-        <h1>
-          <FaSignInAlt /> Log in
-        </h1>
-        <p>Input details below</p>
+    <div className="formBorder">
+      <section className="flex items-center justify-center flex-shrink pb-2 font-bold rounded">
+        Welcome Back!
       </section>
 
-      <section className="form">
+      <section className="formCard">
         <form onSubmit={onSubmit}>
-          <div className="form-group">
+          <div className="formInput">
             <input
               type="email"
               className="form-control"
               id="email"
               name="email"
               value={email}
-              placeholder="Enter your email"
+              placeholder="Email"
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
+          <div className="formInput">
             <input
               type="password"
               className="form-control"
               id="password"
               name="password"
               value={password}
-              placeholder="Enter your password"
+              placeholder="Password"
               onChange={onChange}
             />
           </div>
-
-          <div className="form-group">
-            <button type="submit" className="btn btn-block" onSubmit={onSubmit}>
-              Submit
-            </button>
-          </div>
+          <button type="submit" className="formButton" onSubmit={onSubmit}>
+            /Login
+          </button>
         </form>
       </section>
-    </>
+    </div>
   );
 }
 export default Login;

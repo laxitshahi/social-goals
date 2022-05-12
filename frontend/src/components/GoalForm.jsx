@@ -14,25 +14,21 @@ function GoalForm() {
   };
 
   return (
-    <section className="form">
+    <section className="formCard">
       <form onSubmit={onSubmit}>
-        <div className="form-group">
-          <label htmlFor="text">Goal</label>
+        <div className="formInput">
           <input
             type="text"
             name="text"
             id="text"
+            placeholder="Goal..."
             value={text}
             onChange={(e) => {
               setText(e.target.value); //e is this object object value of the input --> you get the value typed and set it to the "text" state
             }}
           ></input>
         </div>
-        <div className="form-group">
-          <button className="btn btn-block" type="submit">
-            Add Goal
-          </button>
-        </div>
+        <button className="formButton">Add Goal </button>
       </form>
     </section>
   );
