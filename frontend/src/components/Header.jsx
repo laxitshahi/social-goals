@@ -3,7 +3,7 @@ import {
   FaSignInAlt,
   FaSignOutAlt,
   FaUser,
-  FaRegStickyNote,
+  FaStickyNote,
   FaCogs,
 } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,20 +22,31 @@ function Header() {
   };
   return (
     <nav className="sticky flex flex-wrap items-center justify-between p-6 border-b rounded shadow-md ">
-      <div className="flex items-center flex-shrink-0 mr-6 text-white">
-        <FaRegStickyNote />
-        <div className="flex items-center flex-shrink-0 line-through rounded font- ">
-          <Link to="/">Goal Setter</Link>
-        </div>
-      </div>
+      <div className="flex items-center flex-shrink-0 text-white ">
+        <button className="headerButton hover:">
+          <FaStickyNote />
+          {`GeTeS`}
+        </button>
 
+        {user ? (
+          <>
+            <div className="flex items-center flex-shrink-0 rounded hover:line-through font- ">
+              <Link to="/">Dashboard</Link>
+            </div>
+            <div className="flex items-center flex-shrink-0 ml-4 rounded hover:line-through ">
+              <Link to="/universal">Universal</Link>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+      </div>
       {user ? ( //Change Header based on if user is logged in or out
-        <div className="top-0 flex justify-end stick">
-          <button className="headerButton">
+        <div className="top-0 flex justify-end space-x-4 stick">
+          <button className="">
             <FaUser />
-            Profile
           </button>
-          <button className="headerButton" onClick={onLogout}>
+          <button className="" onClick={onLogout}>
             <FaSignOutAlt />
           </button>
         </div>

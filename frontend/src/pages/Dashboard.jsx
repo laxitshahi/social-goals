@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { getGoals, reset } from "../features/goals/goalSlice";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 /*Component Import*/
 import { GoalForm, Spinner, Goal } from "../components";
 const RenderGoals = ({ goals }) => {
@@ -79,7 +78,7 @@ function Dashboard() {
         {/* If user exists (then)=> show user.name*/}
         <GoalForm />
       </section>
-
+      {/* Add modal?i */}
       <section className="flex justify-center">
         {/* 2 or less goals */}
         <RenderGoals goals={goals} />

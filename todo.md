@@ -2,3 +2,6 @@
 
 - Global Goals
 - Graphs
+- Catergorize Goals
+
+- https://foobar.withgoogle.com/#

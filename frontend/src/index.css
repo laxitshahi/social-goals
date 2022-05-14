@@ -2,40 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 /* Gobal css */
 button {
-    @apply transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 
+  @apply transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110;
 }
 
 /* Form css */
-.formBorder{
-    @apply p-20 my-20 border-2 shadow-lg mx-52
+.formBorder {
+  @apply p-20 my-20 border-2 shadow-lg mx-52;
 }
 .formCard {
-    @apply flex justify-center flex-shrink rounded 
-};
+  @apply flex justify-center flex-shrink rounded;
+}
 
 .formInput {
-    @apply rounded flex border-2 py-1 px-6 justify-items-start
+  @apply flex px-6 py-1 border-2 rounded justify-items-start;
 }
 
 @layer components {
-    .formButton{
-        @apply px-24 rounded justify-center flex items-center bg-button text-headline
-    }
+  .formButton {
+    @apply flex items-center justify-center px-24 rounded bg-button text-headline;
+  }
 }
 
-
-
 /* Header css */
-.headerButton {
-    @apply flex items-center flex-shrink-0 px-2 mr-6 rounded shadow bg-button text-headline
+
+@layer components {
+  .headerButton {
+    @apply flex items-center flex-shrink-0 px-2 mr-6 rounded shadow bg-button text-headline;
+  }
 }
 
 /* Effects */
 .hover {
-    @apply transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110
+  @apply transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110;
 }
