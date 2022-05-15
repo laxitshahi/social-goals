@@ -1,7 +1,13 @@
 # TO-DO list for tutorial
 
+MVP Features
+
 - Global Goals
-- Graphs
 - Catergorize Goals
+- Graphs
+
+Extra
+
+- Daily Quote
 
 - https://foobar.withgoogle.com/#
