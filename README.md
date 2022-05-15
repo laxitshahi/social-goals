@@ -4,14 +4,4 @@
 
 ### Motivation
 
-# TO-DO list for tutorial
-
-MVP Features
-
-- [ ] Global Goals
-- [ ] Catergorize Goals
-- [ ] Graphs
-
-Extra
-
-- [ ] Daily Quote
+- Social Goal Setting Application
