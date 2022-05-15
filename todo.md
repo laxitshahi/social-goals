@@ -2,12 +2,12 @@
 
 MVP Features
 
-- Global Goals
-- Catergorize Goals
-- Graphs
+- [ ] Global Goals
+- [ ] Catergorize Goals
+- [ ] Graphs
 
 Extra
 
-- Daily Quote
+- [ ] Daily Quote
 
 - https://foobar.withgoogle.com/#

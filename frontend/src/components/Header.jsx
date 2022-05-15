@@ -4,7 +4,6 @@ import {
   FaSignOutAlt,
   FaUser,
   FaStickyNote,
-  FaCogs,
 } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -23,9 +22,9 @@ function Header() {
   return (
     <nav className="sticky flex flex-wrap items-center justify-between p-6 border-b rounded shadow-md ">
       <div className="flex items-center flex-shrink-0 text-white ">
-        <button className="headerButton hover:">
+        <button className="headerButton hover:linethrough ">
           <FaStickyNote />
-          {`GeTeS`}
+          {/* Goal in Luxembourgish*/} {"Goel"}
         </button>
 
         {user ? (
