@@ -24,7 +24,7 @@ const RenderGoals = ({ goals, search }) => {
       <div className="grid grid-cols-2">
         {/* Add feature to allow for different row placement*/}
         {filteredGoals.map((goal) => (
-          <Goal key={goal._id} goal={goal} />
+          <Goal deleteDisabled={true} key={goal._id} goal={goal} />
         ))}
       </div>
     );
@@ -33,7 +33,7 @@ const RenderGoals = ({ goals, search }) => {
       <div className="grid grid-cols-3">
         {/* Add feature to allow for different row placement*/}
         {filteredGoals.map((goal) => (
-          <Goal key={goal._id} goal={goal} />
+          <Goal deleteDisabled={true} key={goal._id} goal={goal} />
         ))}
       </div>
     );

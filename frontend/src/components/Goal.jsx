@@ -2,13 +2,13 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import { FaEdit, FaRegHandPointRight } from "react-icons/fa";
+import { FaEdit, FaRegHandPointRight, FaRegHeart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { deleteGoal, updateGoal } from "../features/goals/goalSlice";
 
 import { Tag, TagLeftIcon, TagLabel } from "@chakra-ui/react";
 
-function Goals({ goal }) {
+function Goals({ goal, deleteDisabled }) {
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
   const [text, setText] = useState(goal.text);
@@ -25,21 +25,35 @@ function Goals({ goal }) {
   return (
     <div className="relative p-4 m-2 border rounded bg-opacity-40 bg-paragraph">
       {/* Add ability to change goal color */}
-      <button
-        onClick={() => setEdit(!edit)}
-        className="absolute hover top-1 left-4"
-      >
-        <FaEdit />
-      </button>
-      <button
-        onClick={() => dispatch(deleteGoal(goal._id))}
-        className="absolute hover top-1 right-4"
-      >
-        X
-      </button>
+
+      {deleteDisabled ? (
+        <div>
+          <button
+            onClick={() => console.log("hello")}
+            className="absolute hover top-1 right-4"
+          >
+            <FaRegHeart />
+          </button>
+        </div>
+      ) : (
+        <div>
+          <button
+            onClick={() => setEdit(!edit)}
+            className="absolute hover top-1 left-4"
+          >
+            <FaEdit />
+          </button>
+          <button
+            onClick={() => dispatch(deleteGoal(goal._id))}
+            className="absolute hover top-1 right-4"
+          >
+            X
+          </button>
+        </div>
+      )}
 
       {edit ? (
-        <section className="px-1 py-2 formCard">
+        <section className="px-1 py-2 formCard ">
           <form onSubmit={onSubmit}>
             <div className="flex justify-center pb-2 ">
               <input
@@ -78,6 +92,7 @@ function Goals({ goal }) {
 
 Goals.propTypes = {
   goal: PropTypes.object,
+  deleteDisabled: PropTypes.bool,
 };
 
 export default Goals;

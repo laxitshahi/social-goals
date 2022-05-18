@@ -12,8 +12,8 @@ import Spinner from "../components/Spinner";
 import FormCard from "../components/FormCard";
 function Login() {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: "laxit@gmail.com",
+    password: "password",
   });
 
   const { email, password } = formData;

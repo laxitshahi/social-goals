@@ -30,26 +30,38 @@ function GoalForm({ submitText }) {
      * Create Goal if all data inputs exist
      * else => return error
      */
-    if (goalData.text && goalData.category && goalData.type) {
-      dispatch(createGoal(goalData));
-    } else {
-      /**
-       * Remove duplicate errors
-       */
-      if (!toast.isActive(id)) {
-        toast({
-          id,
-          title: "Error",
-          position: "top-right",
-          description: "Inputs missing.",
-          status: "warning",
-          duration: 3000,
-          isClosable: true,
-        });
-      }
-    }
 
-    setText("");
+    if (goalData.text.length <= 69) {
+      if (goalData.text && goalData.category && goalData.type) {
+        dispatch(createGoal(goalData));
+      } else {
+        /**
+         * Remove duplicate errors
+         */
+        if (!toast.isActive(id)) {
+          toast({
+            id,
+            title: "Error",
+            position: "top-right",
+            description: "Inputs missing.",
+            status: "warning",
+            duration: 3000,
+            isClosable: true,
+          });
+        }
+      }
+      setText("");
+    } else {
+      toast({
+        id,
+        title: "Error",
+        position: "top-right",
+        description: "Too many characters",
+        status: "warning",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   };
 
   return (

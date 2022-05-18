@@ -7,13 +7,14 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 /*Component Import*/
 import { GoalForm, Spinner, Goal } from "../components";
+
 const RenderGoals = ({ goals }) => {
   if (goals.length > 0 && goals.length < 3) {
     return (
       <div className="grid grid-cols-2">
         {/* Add feature to allow for different row placement*/}
         {goals.map((goal) => (
-          <Goal key={goal._id} goal={goal} />
+          <Goal deleteDisabled={false} key={goal._id} goal={goal} />
         ))}
       </div>
     );
@@ -22,7 +23,7 @@ const RenderGoals = ({ goals }) => {
       <div className="grid grid-cols-3">
         {/* Add feature to allow for different row placement*/}
         {goals.map((goal) => (
-          <Goal key={goal._id} goal={goal} />
+          <Goal deleteDisabled={false} key={goal._id} goal={goal} />
         ))}
       </div>
     );
