@@ -15,8 +15,10 @@ button {
   @apply flex justify-center flex-shrink rounded;
 }
 
-.formInput {
-  @apply flex px-6 py-1 border-2 rounded justify-items-start;
+@layer components {
+  .formInput {
+    @apply flex px-6 py-1 border-2 rounded justify-items-start;
+  }
 }
 
 @layer components {

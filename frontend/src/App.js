@@ -8,21 +8,24 @@ import { Dashboard, Register, Login, Universal } from "./pages";
 //You need these two libaries to use toast (react-toastify)
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ChakraProvider } from "@chakra-ui/react";
 function App() {
   return (
     <div>
-      <Router className>
-        <div className="font-mono">
-          <Header />
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/universal" element={<Universal />} />
-          </Routes>
-        </div>
-      </Router>
-      <ToastContainer />
+      <ChakraProvider>
+        <Router className>
+          <div className="font-mono">
+            <Header />
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/universal" element={<Universal />} />
+            </Routes>
+          </div>
+        </Router>
+        <ToastContainer />
+      </ChakraProvider>
     </div>
   );
 }

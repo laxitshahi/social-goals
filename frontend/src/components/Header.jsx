@@ -24,7 +24,7 @@ function Header() {
       <div className="flex items-center flex-shrink-0 text-white ">
         <button className="headerButton hover:linethrough ">
           <FaStickyNote />
-          {/* Goal in Luxembourgish*/} {"Goel"}
+          {/* Goal in Luxembourgish*/} {"Zil"}
         </button>
 
         {user ? (

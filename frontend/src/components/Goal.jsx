@@ -1,19 +1,22 @@
-/* eslint-disable react/prop-types */
-//Look into how to declare prop-types
 // eslint-disable-next-line no-unused-vars
-import { FaEdit } from "react-icons/fa";
+import { useState } from "react";
+import PropTypes from "prop-types";
+
+import { FaEdit, FaRegHandPointRight } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { deleteGoal, updateGoal } from "../features/goals/goalSlice";
-import { useState } from "react";
+
+import { Tag, TagLeftIcon, TagLabel } from "@chakra-ui/react";
+
 function Goals({ goal }) {
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
-  const [text, settext] = useState(goal.text);
+  const [text, setText] = useState(goal.text);
   const onSubmit = (e) => {
     e.preventDefault();
     const data = {
       id: goal._id,
-      text: { text },
+      text: { text }, // it is passed in as an object, so you need to destructure the text here..? why
     };
     dispatch(updateGoal(data));
     setEdit(false);
@@ -45,7 +48,7 @@ function Goals({ goal }) {
                 id="text"
                 value={text}
                 onChange={(e) => {
-                  settext(e.target.value); //e is this object object value of the input --> you get the value typed and set it to the "text" state
+                  setText(e.target.value); //e is this object object value of the input --> you get the value typed and set it to the "text" state
                 }}
               ></input>
             </div>
@@ -55,9 +58,26 @@ function Goals({ goal }) {
       ) : (
         <h4 className="my-2 break-words">{goal.text}</h4>
       )}
-      <h5>{new Date(goal.createdAt).toLocaleString("en-US")}</h5>
+      <h5 className="mb-2 text-xs capitalize">
+        <Tag borderRadius="full" size={"xs"}>
+          <TagLeftIcon boxSize="12px" as={FaRegHandPointRight} />
+          <TagLabel> {goal.category}</TagLabel>
+        </Tag>{" "}
+        <Tag borderRadius="full" size={"xs"}>
+          <TagLeftIcon boxSize="12px" as={FaRegHandPointRight} />
+          <TagLabel> {goal.type}</TagLabel>
+        </Tag>
+      </h5>
+
+      <h5 className="text-xs font-extralight">
+        {new Date(goal.createdAt).toLocaleString("en-US")}
+      </h5>
     </div>
   );
 }
+
+Goals.propTypes = {
+  goal: PropTypes.object,
+};
 
 export default Goals;

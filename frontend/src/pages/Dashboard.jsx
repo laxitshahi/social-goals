@@ -76,7 +76,7 @@ function Dashboard() {
           Welcome {user && user.name}!
         </h1>
         {/* If user exists (then)=> show user.name*/}
-        <GoalForm />
+        <GoalForm submitText="Add Goal" />
       </section>
       {/* Add modal?i */}
       <section className="flex justify-center">
