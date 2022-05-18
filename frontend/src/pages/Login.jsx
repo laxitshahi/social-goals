@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom"; //used to redirect (rerender?)
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
-import FormCard from "../components/FormCard";
 function Login() {
   const [formData, setFormData] = useState({
     email: "laxit@gmail.com",
