@@ -34,6 +34,9 @@ function Header() {
             <div className="flex items-center flex-shrink-0 ml-4 rounded hover:line-through ">
               <Link to="/universal">Universal</Link>
             </div>
+            <div className="flex items-center flex-shrink-0 ml-4 rounded hover:line-through ">
+              <Link to="/graphs">Graphs</Link>
+            </div>
           </>
         ) : (
           <></>

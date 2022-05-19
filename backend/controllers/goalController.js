@@ -28,7 +28,6 @@ const getGlobalGoals = asyncHandler(async (req, res) => {
   if (goals.length === 0) {
     res.status(400);
   }
-  console.log(goals);
   res.status(200).json(goals);
 });
 

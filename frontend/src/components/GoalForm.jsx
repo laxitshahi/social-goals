@@ -92,11 +92,11 @@ function GoalForm({ submitText }) {
                 setCategory(e.target.value);
               }}
             >
-              <option value="cerebral">Cerebral</option>
-              <option value="emotional">Emotional</option>
-              <option value="physical">Physical</option>
-              <option value="social">Social</option>
-              <option value="spiritual">Spiritual</option>
+              <option value="relationship">Relationship</option>
+              <option value="health">Health</option>
+              <option value="career">Career</option>
+              <option value="finance">Finance</option>
+              <option value="recreation">Recreation</option>
             </Select>
 
             <Select

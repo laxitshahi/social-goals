@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import Login from "./pages/Login";
 import Header from "./components/Header";
 
-import { Dashboard, Register, Login, Universal } from "./pages";
+import { Dashboard, Register, Login, Universal, Graphs } from "./pages";
 //You need these two libaries to use toast (react-toastify)
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -21,6 +21,7 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/universal" element={<Universal />} />
+              <Route path="/graphs" element={<Graphs />} />
             </Routes>
           </div>
         </Router>
