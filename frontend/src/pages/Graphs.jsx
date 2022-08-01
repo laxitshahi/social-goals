@@ -5,9 +5,9 @@ import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getGlobalGoals, reset } from "../features/goals/goalSlice";
-import { Spinner } from "../components";
+import { Spinner, Goal } from "../components";
 
-function Graphs() {
+function Data() {
   const { user } = useSelector((state) => state.auth);
   const { goals, isLoading, isError, message } = useSelector(
     (state) => state.goals
@@ -79,24 +79,42 @@ function Graphs() {
     <>
       <section className="my-10 capitalize ">
         <h1 className="flex justify-center my-10 text-2xl font-extrabold ">
-          Graphs
+          Data
         </h1>
 
-        {/* If user exists (then)=> show user.name*/}
-        {/* <GoalForm submitText="Search" /> */}
+        <div className="grid grid-cols-1">
+          <div className="">
+            <strong className="flex justify-center">Recent Goals</strong>
+
+            <div> {goals.text}</div>
+            <ol>
+              {goals
+                .filter((item, index) => index < 3)
+                .map((goal) => {
+                  return (
+                    <li key={goal._id}>
+                      <Goal deleteDisabled={true} key={goal._id} goal={goal} />
+                    </li>
+                  );
+                })}
+            </ol>
+          </div>
+
+          {/* Graphs */}
+          <div className="">
+            <strong className="flex justify-center">Data</strong>
+            <div className="p-10 hover:drop-shadow-lg">
+              <PieChart chartData={userData} />
+            </div>
+
+            <div className="p-10 hover:drop-shadow-lg ">
+              <BarChart chartData={userData} />
+            </div>
+          </div>
+        </div>
       </section>
-
-      <div className="flex flex-row ">
-        <div className="p-4 hover:drop-shadow-lg">
-          <PieChart chartData={userData} />
-        </div>
-
-        <div className="p-20 hover:drop-shadow-xl">
-          <BarChart chartData={userData} />
-        </div>
-      </div>
     </>
   );
 }
 
-export default Graphs;
+export default Data;

@@ -1,13 +1,14 @@
 # TO-DO list for tutorial
 
-MVP Features
+**Features**
 
 - [ ] Global Goals
 - [ ] Catergorize Goals
 - [ ] Graphs
+- [x] Daily Quote
 
-Extra
+**Bugs**
 
-- [ ] Daily Quote
+- [ ] Graphs updated based on previous page loaded (Dashboard/Universal)
 
-- https://foobar.withgoogle.com/#
+-

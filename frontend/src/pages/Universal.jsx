@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 /*External Tools*/
 import { toast } from "react-toastify";
-import { getGlobalGoals, reset } from "../features/goals/goalSlice";
+import { getGlobalGoals, reset } from "../features/global/globalSlice";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-/*Component Import*/
+
 import { Spinner, Goal } from "../components";
 
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
@@ -48,8 +48,8 @@ RenderGoals.propTypes = {
 
 function Universal() {
   const { user } = useSelector((state) => state.auth);
-  const { goals, isLoading, isError, message } = useSelector(
-    (state) => state.goals
+  const { globalGoals, isLoading, isError, message } = useSelector(
+    (state) => state.global
   );
   const [quote, setQuote] = useState("");
   const [search, setSearch] = useState("");
@@ -120,7 +120,7 @@ function Universal() {
       {/* Add modal?i */}
       <section className="flex justify-center">
         {/* 2 or less goals */}
-        <RenderGoals goals={goals} search={search} />
+        <RenderGoals goals={globalGoals} search={search} />
       </section>
     </>
   );
