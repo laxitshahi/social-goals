@@ -9,10 +9,11 @@ button {
 
 /* Form css */
 .formBorder {
-  @apply p-20 my-20 border-2 shadow-lg mx-52;
+  @apply grid max-w-5xl grid-cols-1 p-20 mx-auto mt-20 border shadow-lg md:grid-cols-2;
 }
+
 .formCard {
-  @apply flex justify-center flex-shrink rounded;
+  @apply flex justify-center mx-auto rounded;
 }
 
 @layer components {
@@ -23,7 +24,7 @@ button {
 
 @layer components {
   .formButton {
-    @apply flex items-center justify-center px-24 rounded bg-button text-headline;
+    @apply flex justify-center min-w-full rounded bg-button text-headline;
   }
 }
 

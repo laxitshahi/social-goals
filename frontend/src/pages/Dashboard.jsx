@@ -9,27 +9,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { GoalForm, Spinner, Goal } from "../components";
 
 const RenderGoals = ({ goals }) => {
-  if (goals.length > 0 && goals.length < 3) {
-    return (
-      <div className="grid grid-cols-2">
-        {/* Add feature to allow for different row placement*/}
-        {goals.map((goal) => (
-          <Goal deleteDisabled={false} key={goal._id} goal={goal} />
-        ))}
-      </div>
-    );
-  } else if (goals.length >= 3 && goals.length <= 12) {
-    return (
-      <div className="grid grid-cols-3">
-        {/* Add feature to allow for different row placement*/}
-        {goals.map((goal) => (
-          <Goal deleteDisabled={false} key={goal._id} goal={goal} />
-        ))}
-      </div>
-    );
-  } else {
+  if (goals.length === 0) {
     return <h3>You have no Goals.</h3>;
   }
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2">
+      {/* Add feature to allow for different row placement*/}
+      {goals.map((goal) => (
+        <Goal deleteDisabled={false} key={goal._id} goal={goal} />
+      ))}
+    </div>
+  );
 };
 RenderGoals.propTypes = {
   goals: PropTypes.array,

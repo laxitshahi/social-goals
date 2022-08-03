@@ -23,7 +23,7 @@ function Goals({ goal, deleteDisabled }) {
   };
 
   return (
-    <div className="relative p-4 m-2 border rounded bg-opacity-40 bg-paragraph">
+    <div className="relative p-4 m-2 border rounded-xl bg-opacity-40 bg-paragraph">
       {/* Add ability to change goal color */}
 
       {deleteDisabled ? (

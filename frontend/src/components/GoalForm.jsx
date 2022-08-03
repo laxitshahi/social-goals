@@ -2,15 +2,8 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { createGoal } from "../features/goals/goalSlice";
 import { useDispatch } from "react-redux";
-import {
-  // Select,
-  Stack,
-  Textarea,
-  useToast,
-  Select,
-} from "@chakra-ui/react";
+import { Textarea, useToast, Select } from "@chakra-ui/react";
 
-import { FaCog } from "react-icons/fa";
 function GoalForm({ submitText }) {
   const [text, setText] = useState("");
   const [category, setCategory] = useState("");
@@ -65,9 +58,9 @@ function GoalForm({ submitText }) {
   };
 
   return (
-    <section className="formCard">
+    <section className="">
       <form>
-        <div className="gap-7 formInput">
+        <div className="grid max-w-xl grid-cols-1 p-2 mx-auto md:grid-cols-2 gap-x-4">
           <Textarea
             width="auto"
             height="auto"
@@ -80,12 +73,12 @@ function GoalForm({ submitText }) {
               setText(e.target.value); //e is this object object value of the input --> you get the value typed and set it to the "text" state
             }}
           ></Textarea>
-          <Stack>
+          <div className="grid grid-cols-1 gap-y-1 ">
             {/**
              * Update To MENU UI
              */}
             <Select
-              placeholder="Select Category"
+              placeholder="- Select a Category -"
               variant="filled"
               id="category"
               onChange={(e) => {
@@ -100,7 +93,7 @@ function GoalForm({ submitText }) {
             </Select>
 
             <Select
-              placeholder="Select Type"
+              placeholder="- Select Type - "
               variant="filled"
               id="type"
               onChange={(e) => {
@@ -111,17 +104,13 @@ function GoalForm({ submitText }) {
               <option value="local">Local</option>
             </Select>
 
-            <div className="flex gap-2 ">
-              <button onClick={onSubmit} className="px-16 formButton">
+            <div className="">
+              <button onClick={onSubmit} className="formButton">
                 {submitText}
               </button>
-              <button className="px-2 formButton ">
-                <FaCog />
-              </button>
             </div>
-          </Stack>
+          </div>
         </div>
-        <div className="flex gap-4 px-6 justify-items-"></div>
       </form>
     </section>
   );

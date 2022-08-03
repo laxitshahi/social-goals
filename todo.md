@@ -6,9 +6,10 @@
 - [ ] Catergorize Goals
 - [ ] Graphs
 - [x] Daily Quote
+- [ ] Profile Modal/Page
+      **Bugs**
 
-**Bugs**
-
-- [ ] Graphs updated based on previous page loaded (Dashboard/Universal)
+- [ ] Graphs update based on previous page loaded (Dashboard/Universal)
+- [ ]
 
 -

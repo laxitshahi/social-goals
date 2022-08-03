@@ -19,27 +19,17 @@ const RenderGoals = ({ goals, search }) => {
     }
   });
 
-  if (filteredGoals.length > 0 && filteredGoals.length < 3) {
-    return (
-      <div className="grid grid-cols-2">
-        {/* Add feature to allow for different row placement*/}
-        {filteredGoals.map((goal) => (
-          <Goal deleteDisabled={true} key={goal._id} goal={goal} />
-        ))}
-      </div>
-    );
-  } else if (filteredGoals.length >= 3 && filteredGoals.length <= 12) {
-    return (
-      <div className="grid grid-cols-3">
-        {/* Add feature to allow for different row placement*/}
-        {filteredGoals.map((goal) => (
-          <Goal deleteDisabled={true} key={goal._id} goal={goal} />
-        ))}
-      </div>
-    );
-  } else {
-    return <h3>You have no Goals.</h3>;
+  if (filteredGoals.length <= 0) {
+    return <h3>There no Goals available</h3>;
   }
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2">
+      {filteredGoals.map((goal) => (
+        <Goal deleteDisabled={true} key={goal._id} goal={goal} />
+      ))}
+    </div>
+  );
 };
 RenderGoals.propTypes = {
   goals: PropTypes.array,
@@ -51,7 +41,7 @@ function Universal() {
   const { globalGoals, isLoading, isError, message } = useSelector(
     (state) => state.global
   );
-  const [quote, setQuote] = useState("");
+  const [quote, setQuote] = useState("Loading...");
   const [search, setSearch] = useState("");
 
   const navigate = useNavigate();
@@ -97,33 +87,33 @@ function Universal() {
   };
   if (isLoading) {
     <Spinner />;
+  } else {
+    return (
+      <>
+        <section className="my-10 capitalize">
+          <h1 className="flex justify-center my-10 text-2xl font-extrabold ">
+            Universal
+          </h1>
+          <div className="flex justify-center px-8 my-6 ">
+            <FaQuoteLeft />
+            <Code className="italic">{quote}</Code>
+            <FaQuoteRight />
+          </div>
+          {/* If user exists (then)=> show user.name*/}
+          {/* <GoalForm submitText="Search" /> */}
+
+          <div className="flex justify-center max-w-5xl px-4 mx-auto rounded">
+            <Input onChange={onChange} placeholder="Search Goal..." />
+          </div>
+        </section>
+        {/* Add modal?i */}
+        <section className="flex justify-center mx-4 ">
+          {/* 2 or less goals */}
+          <RenderGoals goals={globalGoals} search={search} />
+        </section>
+      </>
+    );
   }
-
-  return (
-    <>
-      <section className="my-10 capitalize">
-        <h1 className="flex justify-center my-10 text-2xl font-extrabold ">
-          Universal
-        </h1>
-        <h1 className="flex justify-center gap-3 my-6 ">
-          <FaQuoteLeft />
-          <Code className="italic">{quote}</Code>
-          <FaQuoteRight />
-        </h1>
-        {/* If user exists (then)=> show user.name*/}
-        {/* <GoalForm submitText="Search" /> */}
-
-        <div className="flex justify-center flex-shrink rounded mx-60">
-          <Input onChange={onChange} placeholder="Search Goal..." />
-        </div>
-      </section>
-      {/* Add modal?i */}
-      <section className="flex justify-center">
-        {/* 2 or less goals */}
-        <RenderGoals goals={globalGoals} search={search} />
-      </section>
-    </>
-  );
 }
 
 export default Universal;

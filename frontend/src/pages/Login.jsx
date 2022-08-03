@@ -11,7 +11,7 @@ import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
 function Login() {
   const [formData, setFormData] = useState({
-    email: "laxit@gmail.com",
+    email: "test@gmail.com",
     password: "password",
   });
 
@@ -57,7 +57,7 @@ function Login() {
   }
   return (
     <div className="formBorder">
-      <section className="flex items-center justify-center flex-shrink pb-2 font-bold rounded">
+      <section className="flex items-center justify-center font-bold rounded ">
         Welcome Back!
       </section>
 

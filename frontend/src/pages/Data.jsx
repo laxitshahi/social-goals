@@ -39,7 +39,7 @@ function Data() {
   }, [user, isError, message, dispatch, navigate, toast]);
 
   const labels = ["Relationship", "Health", "Career", "Finance", "Recreation"];
-  const UserData = goals;
+
   const data = [];
   const numOf = (goals, category) => {
     const lowerCaseCat = category.toLowerCase();
@@ -82,14 +82,15 @@ function Data() {
           Data
         </h1>
 
-        <div className="grid grid-cols-1">
-          <div className="">
-            <strong className="flex justify-center">Recent Goals</strong>
-
-            <div> {goals.text}</div>
+        <div className="grid grid-cols-1 space-y-8 justify-evenly lg:grid-cols-2 ">
+          {/* Recent Goals */}
+          <div className="flex flex-col mx-auto">
+            <h2 className="flex justify-center mx-auto font-bold">
+              Recent Goals
+            </h2>
             <ol>
               {goals
-                .filter((item, index) => index < 3)
+                .filter((item, index) => index < 5)
                 .map((goal) => {
                   return (
                     <li key={goal._id}>
@@ -100,15 +101,16 @@ function Data() {
             </ol>
           </div>
 
-          {/* Graphs */}
-          <div className="">
-            <strong className="flex justify-center">Data</strong>
-            <div className="p-10 hover:drop-shadow-lg">
-              <PieChart chartData={userData} />
-            </div>
+          <div className="mx-auto border-2 shadow-lg">
+            {/* Graphs */}
+            <div className="mx-16">
+              <div className="px-10 hover:drop-shadow-lg">
+                <PieChart chartData={userData} />
+              </div>
 
-            <div className="p-10 hover:drop-shadow-lg ">
-              <BarChart chartData={userData} />
+              <div className="p-10 hover:drop-shadow-lg ">
+                <BarChart chartData={userData} />
+              </div>
             </div>
           </div>
         </div>
