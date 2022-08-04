@@ -7,9 +7,8 @@
 - [ ] Graphs
 - [x] Daily Quote
 - [ ] Profile Modal/Page
-      **Bugs**
+- [ ] Add favourites
+
+**Bugs**
 
 - [ ] Graphs update based on previous page loaded (Dashboard/Universal)
-- [ ]
-
--

@@ -63,10 +63,9 @@ function Register() {
   }
   return (
     <div className="formBorder ">
-      <section className="flex items-center m-auto font-bold gap-x-1">
+      <section className="flex items-center m-auto space-x-2 font-bold justify-items-center">
         <FaUser />
-
-        <h1>Create an Account</h1>
+        <h1 className="">Create an Account</h1>
       </section>
 
       <section className="formCard">

@@ -56,9 +56,9 @@ function Data() {
     datasets: [
       {
         data: data,
-        label: "Categories",
+        label: ["Categories"],
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
+          "rgba(255, 100, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
           "rgba(255, 206, 86, 0.2)",
           "rgba(75, 192, 192, 0.2)",
@@ -82,9 +82,9 @@ function Data() {
           Data
         </h1>
 
-        <div className="grid grid-cols-1 space-y-8 justify-evenly lg:grid-cols-2 ">
+        <div className="grid grid-cols-1 space-y-8 justify-evenly md:grid-cols-2 ">
           {/* Recent Goals */}
-          <div className="flex flex-col mx-auto">
+          <div className="grid grid-cols-1 mx-auto">
             <h2 className="flex justify-center mx-auto font-bold">
               Recent Goals
             </h2>
@@ -101,14 +101,14 @@ function Data() {
             </ol>
           </div>
 
-          <div className="mx-auto border-2 shadow-lg">
+          <div className="p-4 border-2 lg:m-24">
             {/* Graphs */}
-            <div className="mx-16">
-              <div className="px-10 hover:drop-shadow-lg">
+            <div className="grid grid-cols-1 space-y-5">
+              <div className="border hover">
                 <PieChart chartData={userData} />
               </div>
 
-              <div className="p-10 hover:drop-shadow-lg ">
+              <div className="border hover">
                 <BarChart chartData={userData} />
               </div>
             </div>

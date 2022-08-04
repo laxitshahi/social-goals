@@ -18,24 +18,25 @@ function Header() {
     dispatch(reset()); //resets all values in 'user' global state to default
     navigate("/login"); //navigates page to dashboard
   };
+
   return (
-    <nav className="sticky flex flex-wrap items-center justify-between p-6 border-b rounded shadow-md ">
+    <nav className="sticky flex justify-between p-6 space-x-4 border-b rounded shadow-md">
       <div className="flex items-center flex-shrink-0 text-white ">
-        <button className="headerButton hover:linethrough ">
+        <div className="flex items-center justify-center p-1 mr-4 rounded bg-background hover:linethrough text-tertiary gap-x-1">
           <FaStickyNote />
-          {/* Goal in Luxembourgish*/} {"Zil"}
-        </button>
+          {/* Goal in Luxembourgish*/} <p className="">Zil</p>
+        </div>
 
         {user ? (
           <>
-            <div className="flex items-center flex-shrink-0 rounded hover:line-through font- ">
+            <div className="flex items-center rounded hover:line-through ">
               <Link to="/">Dashboard</Link>
             </div>
-            <div className="flex items-center flex-shrink-0 ml-4 rounded hover:line-through ">
-              <Link to="/universal">Universal</Link>
+            <div className="flex items-center ml-4 rounded hover:line-through ">
+              <Link to="/global">Global</Link>
             </div>
-            <div className="flex items-center flex-shrink-0 ml-4 rounded hover:line-through ">
-              <Link to="/Data">Data</Link>
+            <div className="flex items-center ml-4 rounded hover:line-through ">
+              <Link to="/data">Data</Link>
             </div>
           </>
         ) : (
@@ -43,7 +44,7 @@ function Header() {
         )}
       </div>
       {user ? ( //Change Header based on if user is logged in or out
-        <div className="top-0 flex justify-end space-x-4 stick">
+        <div className="flex items-center space-x-2">
           <button className="">
             <FaUser />
           </button>

@@ -12,10 +12,14 @@ const RenderGoals = ({ goals }) => {
   if (goals.length === 0) {
     return <h3>You have no Goals.</h3>;
   }
+
+  let sortedGoals = [...goals].sort((a, b) => {
+    return new Date(a.createdAt) - new Date(b.createdAt);
+  });
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2">
       {/* Add feature to allow for different row placement*/}
-      {goals.map((goal) => (
+      {sortedGoals.map((goal) => (
         <Goal deleteDisabled={false} key={goal._id} goal={goal} />
       ))}
     </div>

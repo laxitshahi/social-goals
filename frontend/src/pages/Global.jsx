@@ -23,9 +23,12 @@ const RenderGoals = ({ goals, search }) => {
     return <h3>There no Goals available</h3>;
   }
 
+  let sortedGoals = [...filteredGoals].sort((a, b) => {
+    return new Date(a.createdAt) - new Date(b.createdAt);
+  });
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2">
-      {filteredGoals.map((goal) => (
+      {sortedGoals.map((goal) => (
         <Goal deleteDisabled={true} key={goal._id} goal={goal} />
       ))}
     </div>
@@ -36,7 +39,7 @@ RenderGoals.propTypes = {
   search: PropTypes.string,
 };
 
-function Universal() {
+function Global() {
   const { user } = useSelector((state) => state.auth);
   const { globalGoals, isLoading, isError, message } = useSelector(
     (state) => state.global
@@ -92,7 +95,7 @@ function Universal() {
       <>
         <section className="my-10 capitalize">
           <h1 className="flex justify-center my-10 text-2xl font-extrabold ">
-            Universal
+            Global
           </h1>
           <div className="flex justify-center px-8 my-6 ">
             <FaQuoteLeft />
@@ -116,4 +119,4 @@ function Universal() {
   }
 }
 
-export default Universal;
+export default Global;

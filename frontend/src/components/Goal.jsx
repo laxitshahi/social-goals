@@ -2,7 +2,11 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import { FaEdit, FaRegHandPointRight, FaRegHeart } from "react-icons/fa";
+import {
+  FaEdit,
+  FaRegHandPointRight,
+  // FaRegHeart,
+} from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { deleteGoal, updateGoal } from "../features/goals/goalSlice";
 
@@ -30,9 +34,9 @@ function Goals({ goal, deleteDisabled }) {
         <div>
           <button
             onClick={() => console.log("hello")}
-            className="absolute hover top-1 right-4"
+            className="absolute hover top-1 right-4 "
           >
-            <FaRegHeart />
+            {/* <FaRegHeart className="overflow-hidden border-2" /> */}
           </button>
         </div>
       ) : (

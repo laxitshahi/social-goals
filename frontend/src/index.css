@@ -9,7 +9,7 @@ button {
 
 /* Form css */
 .formBorder {
-  @apply grid max-w-5xl grid-cols-1 p-20 mx-auto mt-20 border shadow-lg md:grid-cols-2;
+  @apply grid justify-center max-w-5xl p-20 mx-auto mt-20 border shadow-lg md:grid-cols-2;
 }
 
 .formCard {
