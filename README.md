@@ -1,6 +1,6 @@
 # Soci-al
 
-## Demo Link:
+## Demo Link: https://soci-al.herokuapp.com/
 
 ### Motivation
 
