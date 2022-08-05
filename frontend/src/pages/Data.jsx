@@ -102,7 +102,7 @@ function Data() {
           </div>
 
           <div className="relative p-6 mr-2 border-2 lg:m-16 md:m-10">
-            <Tooltip label="Data is currently rendered based on previous page visisted Dashboard (Local Goals), Global (Global Goals).">
+            <Tooltip label="Data is currently rendered based on the previous page visited: Dashboard (Local Goals), Global (Global Goals).">
               <span className="absolute right-1 text top-1 ">
                 <FaInfoCircle />
               </span>
