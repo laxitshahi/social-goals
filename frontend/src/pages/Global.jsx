@@ -44,7 +44,7 @@ function Global() {
   const { globalGoals, isLoading, isError, message } = useSelector(
     (state) => state.global
   );
-  const [quote, setQuote] = useState("Loading...");
+  const [quote, setQuote] = useState({ quote: "loading", author: null });
   const [search, setSearch] = useState("");
 
   const navigate = useNavigate();
@@ -79,7 +79,11 @@ function Global() {
         "https://quotes.rest/qod.json?category=inspire"
       );
       data = await response.json();
-      setQuote(data.contents.quotes[0].quote);
+
+      setQuote({
+        quote: data.contents.quotes[0].quote,
+        author: data.contents.quotes[0].author,
+      });
     })();
   }, [quote]);
 
@@ -99,7 +103,14 @@ function Global() {
           </h1>
           <div className="flex justify-center px-8 my-6 ">
             <FaQuoteLeft />
-            <Code className="italic">{quote}</Code>
+            <div className="italic">
+              <Code>{quote.quote}</Code>
+              <span className="flex justify-end text-sm font-bold ">
+                {" "}
+                - {quote.author}
+              </span>
+            </div>
+
             <FaQuoteRight />
           </div>
           {/* If user exists (then)=> show user.name*/}

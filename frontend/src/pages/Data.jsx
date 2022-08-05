@@ -1,12 +1,12 @@
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
-import { PieChart, BarChart, LineChart } from "../components";
-import { useToast } from "@chakra-ui/react";
+import { PieChart, BarChart } from "../components";
+import { useToast, Tooltip } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getGlobalGoals, reset } from "../features/goals/goalSlice";
 import { Spinner, Goal } from "../components";
 
+import { FaInfoCircle } from "react-icons/fa";
 function Data() {
   const { user } = useSelector((state) => state.auth);
   const { goals, isLoading, isError, message } = useSelector(
@@ -51,6 +51,7 @@ function Data() {
     data.push(numOf(goals, labels[i]));
   }
 
+  // eslint-disable-next-line no-unused-vars
   const [userData, setUserData] = useState({
     labels: labels,
     datasets: [
@@ -82,15 +83,14 @@ function Data() {
           Data
         </h1>
 
-        <div className="grid grid-cols-1 space-y-8 justify-evenly md:grid-cols-2 ">
+        <div className="grid grid-cols-1 gap-y-8 md:gap-y-0 justify-evenly md:grid-cols-2 ">
           {/* Recent Goals */}
-          <div className="grid grid-cols-1 mx-auto">
-            <h2 className="flex justify-center mx-auto font-bold">
-              Recent Goals
-            </h2>
+          <div className="flex flex-col mx-auto lg:m-8">
+            <h2 className="flex justify-center font-bold">Recent Goals</h2>
             <ol>
               {goals
-                .filter((item, index) => index < 5)
+                .slice(-5)
+                .reverse()
                 .map((goal) => {
                   return (
                     <li key={goal._id}>
@@ -101,10 +101,15 @@ function Data() {
             </ol>
           </div>
 
-          <div className="p-4 border-2 lg:m-24">
+          <div className="relative p-6 mr-2 border-2 lg:m-16 md:m-10">
+            <Tooltip label="Data is currently rendered based on previous page visisted Dashboard (Local Goals), Global (Global Goals).">
+              <span className="absolute right-1 text top-1 ">
+                <FaInfoCircle />
+              </span>
+            </Tooltip>
             {/* Graphs */}
-            <div className="grid grid-cols-1 space-y-5">
-              <div className="border hover">
+            <div className="flex flex-col space-y-5 md:space-y-0 ">
+              <div className="border hover bg-[#ffffff]">
                 <PieChart chartData={userData} />
               </div>
 

@@ -2,12 +2,12 @@
 
 **Features**
 
-- [ ] Global Goals
-- [ ] Catergorize Goals
+- [x] Global Goals
+- [x] Global Goal Search
 - [ ] Graphs
 - [x] Daily Quote
 - [ ] Profile Modal/Page
-- [ ] Add favourites
+- [ ] Add favourite goals
 
 **Bugs**
 

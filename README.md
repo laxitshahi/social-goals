@@ -1,9 +1,9 @@
-# Zil.
+# Sociaal.
 
 ### Motivation
 
 - Social Goal Setting Application
-- Used to set goals, find new goals, and recieve visualization
+- Used to set goals, find new goals, and recieve Data
 
 ### Stack
 
@@ -13,6 +13,6 @@
 
 ### Tools
 
-- Tailwindcss + ChakraUI
+- Tailwindcss
+- ChakraUI
 - JWT
-- Axios
