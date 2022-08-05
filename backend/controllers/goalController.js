@@ -5,7 +5,7 @@ const asyncHandler = require("express-async-handler");
 const Goal = require("../models/goalModel");
 const User = require("../models/userModel");
 /* @GET
-Desc    Gets Goals
+Desc    Gets all Globals that belong to a user
 @route  GET /api/goals 
 @access Private (with auth)
 */
@@ -18,9 +18,22 @@ const getGoals = asyncHandler(async (req, res) => {
   res.status(200).json(goals);
 });
 
+/* @GET
+Desc    Gets Global Goals
+@route  GET /api/goals/global
+@access Public?
+*/
+const getGlobalGoals = asyncHandler(async (req, res) => {
+  const goals = await Goal.find({ type: "global" });
+  if (goals.length === 0) {
+    res.status(400);
+  }
+  res.status(200).json(goals);
+});
+
 /* @POST
 Desc    Post Goal
-@route  POST /api/goal
+@route  POST /api/goals
 @access Private (with auth)
 */
 const setGoal = asyncHandler(async (req, res) => {
@@ -32,6 +45,8 @@ const setGoal = asyncHandler(async (req, res) => {
   const goal = await Goal.create({
     user: req.user.id,
     text: req.body.text,
+    type: req.body.type,
+    category: req.body.category,
   });
   res.status(200).json(goal);
 });
@@ -109,4 +124,5 @@ module.exports = {
   setGoal,
   updateGoal,
   deleteGoal,
+  getGlobalGoals,
 };

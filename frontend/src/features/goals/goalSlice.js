@@ -30,17 +30,33 @@ export const createGoal = createAsyncThunk(
   }
 );
 
-//Get goals
+//Get all goals
 export const getGoals = createAsyncThunk(
   "goals/getAll",
   async (_, thunkAPI) => {
     // if you want only the thunkAPI, you must ADD _,
     try {
-      // const token = thunkAPI.getState().auth.user.token;
-      // return await goalService.getGoals(token);
-
       const token = thunkAPI.getState().auth.user.token;
       return await goalService.getGoals(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+//Get Global Goals
+export const getGlobalGoals = createAsyncThunk(
+  "goals/getGlobal",
+  async (_, thunkAPI) => {
+    // if you want only the thunkAPI, you must ADD _,
+    try {
+      return await goalService.getGlobalGoals();
     } catch (error) {
       const message =
         (error.response &&
@@ -86,7 +102,6 @@ export const updateGoal = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString();
-      console.log(error);
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -133,6 +148,22 @@ export const goalSlice = createSlice({
         state.message = action.payload;
       })
 
+      /* Cases for getting globalGoals */
+      .addCase(getGlobalGoals.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getGlobalGoals.fulfilled, (state, action) => {
+        //action is data that is sent back from the api on success
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.goals = action.payload;
+      })
+      .addCase(getGlobalGoals.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+
       /* Cases for deleting goals */
       .addCase(deleteGoal.pending, (state) => {
         state.isLoading = true;
@@ -160,8 +191,6 @@ export const goalSlice = createSlice({
         //action is data that is sent back from the api on success
         state.isLoading = false;
         state.isSuccess = true;
-        console.log(action.payload);
-
         const update = (text) =>
           state.goals.map((goal) => {
             if (goal._id === action.payload._id) {

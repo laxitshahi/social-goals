@@ -17,7 +17,7 @@ module.exports = {
       // tertiary: "#eebbc3",
 
       primary: "#FAEEE7",
-      secondary: "#6C5B51",
+      // secondary: "#6C5B51",
       tertiary: "#F8F9FF",
     },
     extend: {},

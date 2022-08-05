@@ -5,31 +5,25 @@ import { toast } from "react-toastify";
 import { getGoals, reset } from "../features/goals/goalSlice";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 /*Component Import*/
 import { GoalForm, Spinner, Goal } from "../components";
+
 const RenderGoals = ({ goals }) => {
-  if (goals.length > 0 && goals.length < 3) {
-    return (
-      <div className="grid grid-cols-2">
-        {/* Add feature to allow for different row placement*/}
-        {goals.map((goal) => (
-          <Goal key={goal._id} goal={goal} />
-        ))}
-      </div>
-    );
-  } else if (goals.length >= 3 && goals.length <= 12) {
-    return (
-      <div className="grid grid-cols-3">
-        {/* Add feature to allow for different row placement*/}
-        {goals.map((goal) => (
-          <Goal key={goal._id} goal={goal} />
-        ))}
-      </div>
-    );
-  } else {
+  if (goals.length === 0) {
     return <h3>You have no Goals.</h3>;
   }
+
+  let sortedGoals = [...goals].sort((a, b) => {
+    return new Date(a.createdAt) - new Date(b.createdAt);
+  });
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2">
+      {/* Add feature to allow for different row placement*/}
+      {sortedGoals.map((goal) => (
+        <Goal deleteDisabled={false} key={goal._id} goal={goal} />
+      ))}
+    </div>
+  );
 };
 RenderGoals.propTypes = {
   goals: PropTypes.array,
@@ -77,9 +71,9 @@ function Dashboard() {
           Welcome {user && user.name}!
         </h1>
         {/* If user exists (then)=> show user.name*/}
-        <GoalForm />
+        <GoalForm submitText="Add Goal" />
       </section>
-
+      {/* Add modal?i */}
       <section className="flex justify-center">
         {/* 2 or less goals */}
         <RenderGoals goals={goals} />

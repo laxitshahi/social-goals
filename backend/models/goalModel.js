@@ -11,6 +11,14 @@ const goalSchema = mongoose.Schema(
       type: String,
       required: [true, "Please include a text value"],
     },
+    type: {
+      type: String,
+      required: [true, "Please include a type value"],
+    },
+    category: {
+      type: String,
+      required: [true, "Please include a category value"],
+    },
   },
   { timestamps: true } //Automatically creats 'Created at' and 'Updated at' timestamps
 );

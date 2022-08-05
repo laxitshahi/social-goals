@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import PropTypes from "prop-types";
 
-function Modal({ title }) {
+function Modal({ title, open }) {
   console.log(title);
-  let [isOpen, setIsOpen] = useState(true);
+  let [isOpen, setIsOpen] = useState(open);
 
   const save = () => {
     console.log("saved");
@@ -15,7 +15,7 @@ function Modal({ title }) {
       <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="z-50">
         <div className="absolute inset-0 flex items-center justify-center p-4">
           <Dialog.Panel className="w-full max-w-sm text-center rounded shadow-xl bg-tertiary">
-            <Dialog.Title>Account Details</Dialog.Title>
+            <Dialog.Title>{title}</Dialog.Title>
             <Dialog.Description></Dialog.Description>
 
             <section className="formCard">
@@ -48,6 +48,7 @@ function Modal({ title }) {
 
 Modal.propTypes = {
   title: PropTypes.string,
+  open: PropTypes.bool,
 };
 
 export default Modal;
