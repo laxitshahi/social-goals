@@ -5,6 +5,7 @@ import {
   FaStickyNote,
 } from "react-icons/fa";
 
+//Imports for popover
 import {
   Popover,
   PopoverTrigger,

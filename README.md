@@ -2,6 +2,8 @@
 
 ## Demo Link: https://soci-al.herokuapp.com/
 
+- Note: The website may take some time to load on the first visit
+
 ### Motivation
 
 There is an unessecary amount of time spent on searching for goals, rather than carrying them out. The idea behind Soci-al (Social + Goal) is to speed up the process of
@@ -10,11 +12,11 @@ finding goals, so that you can focus on completing them.
 **Soci-al allows you to:**
 
 - Save Goals locally
-- Share Goals Globally
+- Share Goals globally
 - Search through global goals
 - View insightful statistics and trends
 
-### Built With
+### Built With:
 
 - NodeJS + ExpressJS
 - MongoDB + Mongoose
@@ -33,6 +35,8 @@ finding goals, so that you can focus on completing them.
 - [x] Daily Quote
 - [ ] Profile Modal/Page
 - [ ] Add favourite goals
+- [ ] Add pop instructions for each page
+- [ ] Add information/help icon on each page
 
 #### Bugs
 
