@@ -60,7 +60,7 @@ function Header() {
           <Popover className="bg-[#ffffff]">
             <PopoverTrigger>
               <button
-                colorScheme="white"
+                colorscheme="white"
                 className="flex items-center justify-center space-x-1 font-bold"
               >
                 <FaUser />
