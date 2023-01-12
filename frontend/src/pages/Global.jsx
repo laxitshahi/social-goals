@@ -5,10 +5,10 @@ import { toast } from "react-toastify";
 import { getGlobalGoals, reset } from "../features/global/globalSlice";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { Spinner, Goal } from "../components";
+import { FaQuoteLeft, FaQuoteRight, FaInfoCircle } from "react-icons/fa";
+import { Tooltip } from "@chakra-ui/react";
 
-import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import { Input, Code } from "@chakra-ui/react";
 const RenderGoals = ({ goals, search }) => {
   const filteredGoals = goals.filter((goal) => {
@@ -96,14 +96,19 @@ function Global() {
     <Spinner />;
   } else {
     return (
-      <>
+      <div>
         <section className="my-10 capitalize">
-          <h1 className="flex justify-center my-10 text-2xl font-extrabold ">
-            Global
+          <h1 className="flex items-center justify-center my-10 space-x-2 text-2xl font-extrabold">
+            <span>Global</span>{" "}
+            <Tooltip label="This page shows goals for all users (including yourself)! You can easily find any goal using the search functionality.">
+              <span>
+                <FaInfoCircle className="text-xl" />
+              </span>
+            </Tooltip>
           </h1>
           <div className="flex justify-center px-8 my-6 ">
-            <FaQuoteLeft />
-            <div className="italic">
+            <FaQuoteLeft className="text-sm" />
+            <div className="px-1.5 space-y-2 italic">
               <Code>{quote.quote}</Code>
               <span className="flex justify-end text-sm font-bold ">
                 {" "}
@@ -111,7 +116,7 @@ function Global() {
               </span>
             </div>
 
-            <FaQuoteRight />
+            <FaQuoteRight className="text-sm" />
           </div>
           {/* If user exists (then)=> show user.name*/}
           {/* <GoalForm submitText="Search" /> */}
@@ -125,7 +130,7 @@ function Global() {
           {/* 2 or less goals */}
           <RenderGoals goals={globalGoals} search={search} />
         </section>
-      </>
+      </div>
     );
   }
 }

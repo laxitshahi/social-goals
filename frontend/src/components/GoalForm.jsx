@@ -104,7 +104,7 @@ function GoalForm({ submitText }) {
               <option value="local">Local</option>
             </Select>
 
-            <div className="">
+            <div>
               <button onClick={onSubmit} className="formButton">
                 {submitText}
               </button>
