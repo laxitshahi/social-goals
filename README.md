@@ -2,7 +2,7 @@
 
 ## Demo Link: https://soci-al.herokuapp.com/
 
-- Note: The website may take some time to load on the first visit
+- Note: The website is currently not hosted!
 
 ### Motivation
 
